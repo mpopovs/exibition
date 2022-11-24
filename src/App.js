@@ -1,32 +1,51 @@
+import { useState, useEffect } from 'react'
 import { ARButton, XR} from '@react-three/xr'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import './App.css'
 import Exibition from './components/ExibitionStend'
+import { Widget } from "@uploadcare/react-widget"
 
 
 function App() {
-
-  const first =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const second =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const third =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const forth =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const fifth =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const sixth =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const seventh =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-  const eigth =
-  "https://cdn.glitch.global/89f42e75-f6d4-4696-9efe-aa8d1cdb61e8/one_eyed_listeners.png?v=1653503087622";
-// 
+//image planes
+  const first =`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`
+  const [second, setSecond] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
+  const [third, setThird] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
+  const [forth, setForth] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
+  const [fifth, setFifth] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
+  const [sixth, setSixth] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
+  const [seventh, setSeventh] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
+  const [eigth, setEight] = useState(`https://ucarecdn.com/fb8ddf0e-85ad-4c49-b82c-b4818810aec0/`)
   
   return (
     <>
+    {/* image upload */}
+     <Widget publicKey='7bf913439f3f9aac4a9b' 
+    id='file'
+  name='file'
+  tabs='file'
+ 
+  previewStep='true'
+    multiple
+    multipleMax = {7}
+    multipleMin = {7}
+    imagesOnly = {true}
+    crop = {'1:1'}
+    imageShrink = {'600x600 95%'}
+  
+    onFileSelect={async (group) => {
+      const files = await Promise.all(group.files());
+     const urls = files.map((file) => file.cdnUrl);
+           setSecond(urls[0])
+           setThird(urls[1])
+           setForth(urls[2])
+           setFifth(urls[3])
+           setSixth(urls[4])
+           setSeventh(urls[5])
+           setEight(urls[6])
+        }} 
+   />
       <ARButton />
       <Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
       <ambientLight />

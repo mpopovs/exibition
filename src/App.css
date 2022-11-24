@@ -6,3 +6,19 @@ body,
   margin: 0;
   padding: 0;
 }
+.uploadcare--powered-by, .uploadcare--powered-by__link {
+  display: none;
+}
+.uploadcare--widget_status_loaded{
+  display: none;
+}
+.uploadcare--page {
+  width: 50vh;
+}
+.uploadcare--widget{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
